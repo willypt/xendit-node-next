@@ -1,4 +1,3 @@
-export * from './models'
 export {
-   Customer,
+   CustomerApi as Customer,
 } from './apis'

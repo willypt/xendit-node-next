@@ -1,5 +1,3 @@
-export * from './models'
 export {
-   Balance,
-   Public,
+   BalanceApi as Balance,
 } from './apis'

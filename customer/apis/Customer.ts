@@ -26,7 +26,7 @@ export interface GetCustomerRequest {
 /**
  * 
  */
-export class Customer extends runtime.BaseAPI {
+export class CustomerApi extends runtime.BaseAPI {
 
     secretKey: string;
     xenditURL: string;
@@ -80,8 +80,8 @@ export class Customer extends runtime.BaseAPI {
      * Retrieves a single customer object
      * Get Customer
      */
-    async getCustomer(requestParameters: GetCustomerRequest): Promise<Customer> {
-        const response = await this.getCustomerRaw(requestParameters);
+    async getCustomer(id: string, forUserId?: string, xIdempotencyKey?: string, idempotencyKey?: string, ): Promise<Customer> {
+        const response = await this.getCustomerRaw({ id: id, forUserId: forUserId, xIdempotencyKey: xIdempotencyKey, idempotencyKey: idempotencyKey });
         return await response.value();
     }
 

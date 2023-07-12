@@ -163,7 +163,7 @@ export interface PublicSimulatePaymentChannelHealthRequest {
 /**
  * 
  */
-export class PaymentMethod extends runtime.BaseAPI {
+export class PaymentMethodApi extends runtime.BaseAPI {
 
     secretKey: string;
     xenditURL: string;
@@ -213,8 +213,8 @@ export class PaymentMethod extends runtime.BaseAPI {
      * This endpoint validates a payment method linking OTP
      * Validate a payment method\'s linking OTP
      */
-    async authPaymentMethod(requestParameters: AuthPaymentMethodRequest): Promise<PublicPaymentMethod> {
-        const response = await this.authPaymentMethodRaw(requestParameters);
+    async authPaymentMethod(paymentMethodId: string, xIdempotencyKey?: string, idempotencyKey?: string, publicAuthPaymentMethod?: PublicAuthPaymentMethod, ): Promise<PublicPaymentMethod> {
+        const response = await this.authPaymentMethodRaw({ paymentMethodId: paymentMethodId, xIdempotencyKey: xIdempotencyKey, idempotencyKey: idempotencyKey, publicAuthPaymentMethod: publicAuthPaymentMethod });
         return await response.value();
     }
 
@@ -253,8 +253,8 @@ export class PaymentMethod extends runtime.BaseAPI {
      * This endpoint initiates creation of payment method
      * Creates payment method
      */
-    async createPaymentMethod(requestParameters: CreatePaymentMethodRequest = {}): Promise<PublicPaymentMethod> {
-        const response = await this.createPaymentMethodRaw(requestParameters);
+    async createPaymentMethod(xIdempotencyKey?: string, idempotencyKey?: string, publicCreatePaymentMethod?: PublicCreatePaymentMethod, ): Promise<PublicPaymentMethod> {
+        const response = await this.createPaymentMethodRaw({ xIdempotencyKey: xIdempotencyKey, idempotencyKey: idempotencyKey, publicCreatePaymentMethod: publicCreatePaymentMethod });
         return await response.value();
     }
 
@@ -297,8 +297,8 @@ export class PaymentMethod extends runtime.BaseAPI {
      * This endpoint expires a payment method and performs unlinking if necessary
      * Expires a payment method
      */
-    async expirePaymentMethod(requestParameters: ExpirePaymentMethodRequest): Promise<PublicPaymentMethod> {
-        const response = await this.expirePaymentMethodRaw(requestParameters);
+    async expirePaymentMethod(paymentMethodId: string, xIdempotencyKey?: string, idempotencyKey?: string, publicExpirePaymentMethod?: PublicExpirePaymentMethod | null, ): Promise<PublicPaymentMethod> {
+        const response = await this.expirePaymentMethodRaw({ paymentMethodId: paymentMethodId, xIdempotencyKey: xIdempotencyKey, idempotencyKey: idempotencyKey, publicExpirePaymentMethod: publicExpirePaymentMethod });
         return await response.value();
     }
 
@@ -342,8 +342,8 @@ export class PaymentMethod extends runtime.BaseAPI {
      * Get all payment channels
      * Get all payment channels
      */
-    async getAllPaymentChannels(requestParameters: GetAllPaymentChannelsRequest = {}): Promise<PublicPaymentChannelList> {
-        const response = await this.getAllPaymentChannelsRaw(requestParameters);
+    async getAllPaymentChannels(isActivated?: GetAllPaymentChannelsIsActivatedEnum, type?: string, xIdempotencyKey?: string, idempotencyKey?: string, ): Promise<PublicPaymentChannelList> {
+        const response = await this.getAllPaymentChannelsRaw({ isActivated: isActivated, type: type, xIdempotencyKey: xIdempotencyKey, idempotencyKey: idempotencyKey });
         return await response.value();
     }
 
@@ -415,8 +415,8 @@ export class PaymentMethod extends runtime.BaseAPI {
      * Get all payment methods by filters
      * Get all payment methods by filters
      */
-    async getAllPaymentMethods(requestParameters: GetAllPaymentMethodsRequest = {}): Promise<PublicPaymentMethodList> {
-        const response = await this.getAllPaymentMethodsRaw(requestParameters);
+    async getAllPaymentMethods(id?: Array<string>, type?: Array<string>, status?: Array<PaymentMethodStatus>, reusability?: PaymentMethodReusability, customerId?: string, referenceId?: string, afterId?: string, beforeId?: string, limit?: number, xIdempotencyKey?: string, idempotencyKey?: string, ): Promise<PublicPaymentMethodList> {
+        const response = await this.getAllPaymentMethodsRaw({ id: id, type: type, status: status, reusability: reusability, customerId: customerId, referenceId: referenceId, afterId: afterId, beforeId: beforeId, limit: limit, xIdempotencyKey: xIdempotencyKey, idempotencyKey: idempotencyKey });
         return await response.value();
     }
 
@@ -456,8 +456,8 @@ export class PaymentMethod extends runtime.BaseAPI {
      * Get payment method by ID
      * Get payment method by ID
      */
-    async getPaymentMethodByID(requestParameters: GetPaymentMethodByIDRequest): Promise<PublicPaymentMethod> {
-        const response = await this.getPaymentMethodByIDRaw(requestParameters);
+    async getPaymentMethodByID(paymentMethodId: string, xIdempotencyKey?: string, idempotencyKey?: string, ): Promise<PublicPaymentMethod> {
+        const response = await this.getPaymentMethodByIDRaw({ paymentMethodId: paymentMethodId, xIdempotencyKey: xIdempotencyKey, idempotencyKey: idempotencyKey });
         return await response.value();
     }
 
@@ -500,8 +500,8 @@ export class PaymentMethod extends runtime.BaseAPI {
      * This endpoint is used to toggle the ```status``` of an e-Wallet or a Direct Debit payment method to ```ACTIVE``` or ```INACTIVE```.  This is also used to update the details of an Over-the-Counter or a Virtual Account payment method.
      * Patch payment methods
      */
-    async patchPaymentMethods(requestParameters: PatchPaymentMethodsRequest): Promise<PublicPaymentMethod> {
-        const response = await this.patchPaymentMethodsRaw(requestParameters);
+    async patchPaymentMethods(paymentMethodId: string, xIdempotencyKey?: string, idempotencyKey?: string, publicPatchPaymentMethod?: PublicPatchPaymentMethod, ): Promise<PublicPaymentMethod> {
+        const response = await this.patchPaymentMethodsRaw({ paymentMethodId: paymentMethodId, xIdempotencyKey: xIdempotencyKey, idempotencyKey: idempotencyKey, publicPatchPaymentMethod: publicPatchPaymentMethod });
         return await response.value();
     }
 
@@ -597,8 +597,8 @@ export class PaymentMethod extends runtime.BaseAPI {
      * Returns payments with matching PaymentMethodID.
      * Returns payments with matching PaymentMethodID.
      */
-    async publicGetPaymentsByPaymentMethodId(requestParameters: PublicGetPaymentsByPaymentMethodIdRequest): Promise<object> {
-        const response = await this.publicGetPaymentsByPaymentMethodIdRaw(requestParameters);
+    async publicGetPaymentsByPaymentMethodId(paymentMethodId: string, paymentRequestId?: Array<string>, paymentMethodId2?: Array<string>, referenceId?: Array<string>, paymentMethodType?: Array<PaymentMethodType>, channelCode?: Array<string>, status?: Array<string>, currency?: Array<string>, createdGte?: Date, createdLte?: Date, updatedGte?: Date, updatedLte?: Date, limit?: number, afterId?: string, beforeId?: string, xIdempotencyKey?: string, idempotencyKey?: string, ): Promise<object> {
+        const response = await this.publicGetPaymentsByPaymentMethodIdRaw({ paymentMethodId: paymentMethodId, paymentRequestId: paymentRequestId, paymentMethodId2: paymentMethodId2, referenceId: referenceId, paymentMethodType: paymentMethodType, channelCode: channelCode, status: status, currency: currency, createdGte: createdGte, createdLte: createdLte, updatedGte: updatedGte, updatedLte: updatedLte, limit: limit, afterId: afterId, beforeId: beforeId, xIdempotencyKey: xIdempotencyKey, idempotencyKey: idempotencyKey });
         return await response.value();
     }
 
@@ -641,8 +641,8 @@ export class PaymentMethod extends runtime.BaseAPI {
      * Makes payment with matching PaymentMethodID.
      * Makes payment with matching PaymentMethodID.
      */
-    async publicSimulatePaymentByPaymentMethodId(requestParameters: PublicSimulatePaymentByPaymentMethodIdOperationRequest): Promise<PublicSimulatePayment> {
-        const response = await this.publicSimulatePaymentByPaymentMethodIdRaw(requestParameters);
+    async publicSimulatePaymentByPaymentMethodId(paymentMethodId: string, xIdempotencyKey?: string, idempotencyKey?: string, publicSimulatePaymentByPaymentMethodIdRequest?: PublicSimulatePaymentByPaymentMethodIdRequest, ): Promise<PublicSimulatePayment> {
+        const response = await this.publicSimulatePaymentByPaymentMethodIdRaw({ paymentMethodId: paymentMethodId, xIdempotencyKey: xIdempotencyKey, idempotencyKey: idempotencyKey, publicSimulatePaymentByPaymentMethodIdRequest: publicSimulatePaymentByPaymentMethodIdRequest });
         return await response.value();
     }
 
@@ -685,8 +685,8 @@ export class PaymentMethod extends runtime.BaseAPI {
      * Simulate payment channel health to a given business id.
      * Simulate payment channel health to a given business id.
      */
-    async publicSimulatePaymentChannelHealth(requestParameters: PublicSimulatePaymentChannelHealthRequest): Promise<PublicSimulatePaymentChannelHealth> {
-        const response = await this.publicSimulatePaymentChannelHealthRaw(requestParameters);
+    async publicSimulatePaymentChannelHealth(publicPostSimulatePaymentChannelHealth: PublicPostSimulatePaymentChannelHealth, xIdempotencyKey?: string, idempotencyKey?: string, ): Promise<PublicSimulatePaymentChannelHealth> {
+        const response = await this.publicSimulatePaymentChannelHealthRaw({ publicPostSimulatePaymentChannelHealth: publicPostSimulatePaymentChannelHealth, xIdempotencyKey: xIdempotencyKey, idempotencyKey: idempotencyKey });
         return await response.value();
     }
 

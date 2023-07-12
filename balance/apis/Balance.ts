@@ -32,7 +32,7 @@ export interface GetBalanceOldRequest {
 /**
  * 
  */
-export class Balance extends runtime.BaseAPI {
+export class BalanceApi extends runtime.BaseAPI {
 
     secretKey: string;
     xenditURL: string;
@@ -83,8 +83,8 @@ export class Balance extends runtime.BaseAPI {
      * Backward compatible api to the old balance endpoint. https://xendit.github.io/apireference/#balances
      * To be deprecated. Backward compatible api to old /balance endpoint
      */
-    async getBalanceOld(requestParameters: GetBalanceOldRequest = {}): Promise<BalanceOld> {
-        const response = await this.getBalanceOldRaw(requestParameters);
+    async getBalanceOld(accountType?: GetBalanceOldAccountTypeEnum, currency?: string, forUserId?: string, idempotencyKey?: string, ): Promise<BalanceOld> {
+        const response = await this.getBalanceOldRaw({ accountType: accountType, currency: currency, forUserId: forUserId, idempotencyKey: idempotencyKey });
         return await response.value();
     }
 

@@ -1,5 +1,3 @@
-export * from './models'
 export {
-   Public,
-   Refund,
+   RefundApi as Refund,
 } from './apis'

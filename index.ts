@@ -3,28 +3,32 @@
 export * from './runtime';
 
 import {
-
+   PaymentRequest,
+} from './payment_request';
+export {
+   PaymentRequest,
 } from './payment_request';
 
 import {
    Balance,
 } from './balance';
+export {
+   Balance,
+} from './balance';
 
 import {
-   PaymentMethod,
-} from './payment_method';
-
-import {
+   Refund,
+} from './refunds';
+export {
    Refund,
 } from './refunds';
 
 import {
    Customer,
 } from './customer';
-
-import {
-
-} from './src';
+export {
+   Customer,
+} from './customer';
 
 
 export interface XenditOpts {
@@ -35,9 +39,9 @@ export class Xendit {
   opts: XenditOpts;
 
 
-    Balance: Balance;
+    PaymentRequest: PaymentRequest;
 
-    PaymentMethod: PaymentMethod;
+    Balance: Balance;
 
     Refund: Refund;
 
@@ -62,15 +66,15 @@ export class Xendit {
     }
 
 
-
-    this.Balance = new Balance(this.opts);
+    this.PaymentRequest = new PaymentRequest(this.opts);
     
-    this.PaymentMethod = new PaymentMethod(this.opts);
+    this.Balance = new Balance(this.opts);
     
     this.Refund = new Refund(this.opts);
     
     this.Customer = new Customer(this.opts);
     
-
   }
 }
+
+export default Xendit;

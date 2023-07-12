@@ -1,6 +1,6 @@
 {
   "name": "xendit-node-next",
-  "version": "2.79.0",
+  "version": "3.0.1",
   "description": "OpenAPI client for xendit-node-next",
   "author": "OpenAPI-Generator",
   "repository": {

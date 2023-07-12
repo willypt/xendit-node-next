@@ -1,4 +1,3 @@
-export * from './models'
 export {
-   Public,
+   PaymentRequestApi as PaymentRequest,
 } from './apis'

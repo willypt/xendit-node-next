@@ -53,7 +53,7 @@ export interface RefundsRefundIDGetRequest {
 /**
  * 
  */
-export class Refund extends runtime.BaseAPI {
+export class RefundApi extends runtime.BaseAPI {
 
     secretKey: string;
     xenditURL: string;
@@ -116,8 +116,8 @@ export class Refund extends runtime.BaseAPI {
 
     /**
      */
-    async refundsPost(requestParameters: RefundsPostRequest = {}): Promise<Refund> {
-        const response = await this.refundsPostRaw(requestParameters);
+    async refundsPost(idempotencyKey?: string, createRefund?: CreateRefund, ): Promise<Refund> {
+        const response = await this.refundsPostRaw({ idempotencyKey: idempotencyKey, createRefund: createRefund });
         return await response.value();
     }
 
@@ -149,8 +149,8 @@ export class Refund extends runtime.BaseAPI {
 
     /**
      */
-    async refundsRefundIDGet(requestParameters: RefundsRefundIDGetRequest): Promise<Refund> {
-        const response = await this.refundsRefundIDGetRaw(requestParameters);
+    async refundsRefundIDGet(refundID: string, idempotencyKey?: string, ): Promise<Refund> {
+        const response = await this.refundsRefundIDGetRaw({ refundID: refundID, idempotencyKey: idempotencyKey });
         return await response.value();
     }
 

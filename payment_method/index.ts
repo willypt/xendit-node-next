@@ -1,4 +1,3 @@
-export * from './models'
 export {
-   PaymentMethod,
+   PaymentMethodApi as PaymentMethod,
 } from './apis'
