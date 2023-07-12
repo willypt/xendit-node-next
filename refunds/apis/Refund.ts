@@ -116,8 +116,8 @@ export class RefundApi extends runtime.BaseAPI {
 
     /**
      */
-    async refundsPost(idempotencyKey?: string, createRefund?: CreateRefund, ): Promise<Refund> {
-        const response = await this.refundsPostRaw({ idempotencyKey: idempotencyKey, createRefund: createRefund });
+    async refundsPost(requestParameters: RefundsPostRequest = {}): Promise<Refund> {
+        const response = await this.refundsPostRaw(requestParameters);
         return await response.value();
     }
 
@@ -149,8 +149,8 @@ export class RefundApi extends runtime.BaseAPI {
 
     /**
      */
-    async refundsRefundIDGet(refundID: string, idempotencyKey?: string, ): Promise<Refund> {
-        const response = await this.refundsRefundIDGetRaw({ refundID: refundID, idempotencyKey: idempotencyKey });
+    async refundsRefundIDGet(requestParameters: RefundsRefundIDGetRequest): Promise<Refund> {
+        const response = await this.refundsRefundIDGetRaw(requestParameters);
         return await response.value();
     }
 

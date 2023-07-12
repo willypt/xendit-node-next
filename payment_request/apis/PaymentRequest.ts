@@ -123,8 +123,8 @@ export class PaymentRequestApi extends runtime.BaseAPI {
      * Create Payment Request
      * Create Payment Request
      */
-    async createPaymentRequest(idempotencyKey?: string, publicCreatePaymentRequest?: PublicCreatePaymentRequest, ): Promise<PublicPaymentRequest> {
-        const response = await this.createPaymentRequestRaw({ idempotencyKey: idempotencyKey, publicCreatePaymentRequest: publicCreatePaymentRequest });
+    async createPaymentRequest(requestParameters: CreatePaymentRequestRequest = {}): Promise<PublicPaymentRequest> {
+        const response = await this.createPaymentRequestRaw(requestParameters);
         return await response.value();
     }
 
@@ -164,8 +164,8 @@ export class PaymentRequestApi extends runtime.BaseAPI {
      * Get all payment requests by filter
      * Get all payment requests by filter
      */
-    async getAllPaymentRequests(referenceId?: Array<string>, limit?: number, idempotencyKey?: string, ): Promise<PublicPaymentRequestListResponse> {
-        const response = await this.getAllPaymentRequestsRaw({ referenceId: referenceId, limit: limit, idempotencyKey: idempotencyKey });
+    async getAllPaymentRequests(requestParameters: GetAllPaymentRequestsRequest = {}): Promise<PublicPaymentRequestListResponse> {
+        const response = await this.getAllPaymentRequestsRaw(requestParameters);
         return await response.value();
     }
 
@@ -201,8 +201,8 @@ export class PaymentRequestApi extends runtime.BaseAPI {
      * Get payment request by ID
      * Get payment request by ID
      */
-    async getPaymentRequestByID(paymentRequestId: string, idempotencyKey?: string, ): Promise<PublicPaymentRequest> {
-        const response = await this.getPaymentRequestByIDRaw({ paymentRequestId: paymentRequestId, idempotencyKey: idempotencyKey });
+    async getPaymentRequestByID(requestParameters: GetPaymentRequestByIDRequest): Promise<PublicPaymentRequest> {
+        const response = await this.getPaymentRequestByIDRaw(requestParameters);
         return await response.value();
     }
 
@@ -250,8 +250,8 @@ export class PaymentRequestApi extends runtime.BaseAPI {
      * Get Payment Request Capture
      * Get Payment Request Capture
      */
-    async getPaymentRequestCapture(paymentRequestId: string, limit?: number, afterId?: string, beforeId?: string, idempotencyKey?: string, ): Promise<CaptureListResponse> {
-        const response = await this.getPaymentRequestCaptureRaw({ paymentRequestId: paymentRequestId, limit: limit, afterId: afterId, beforeId: beforeId, idempotencyKey: idempotencyKey });
+    async getPaymentRequestCapture(requestParameters: GetPaymentRequestCaptureRequest): Promise<CaptureListResponse> {
+        const response = await this.getPaymentRequestCaptureRaw(requestParameters);
         return await response.value();
     }
 
@@ -290,8 +290,8 @@ export class PaymentRequestApi extends runtime.BaseAPI {
      * Payment Request Authorize
      * Payment Request Authorize
      */
-    async paymentRequestAuthorize(paymentRequestId: string, idempotencyKey?: string, publicPaymentRequestAuthorize?: PublicPaymentRequestAuthorize, ): Promise<PublicPaymentRequest> {
-        const response = await this.paymentRequestAuthorizeRaw({ paymentRequestId: paymentRequestId, idempotencyKey: idempotencyKey, publicPaymentRequestAuthorize: publicPaymentRequestAuthorize });
+    async paymentRequestAuthorize(requestParameters: PaymentRequestAuthorizeRequest): Promise<PublicPaymentRequest> {
+        const response = await this.paymentRequestAuthorizeRaw(requestParameters);
         return await response.value();
     }
 
@@ -330,8 +330,8 @@ export class PaymentRequestApi extends runtime.BaseAPI {
      * Payment Request Capture
      * Payment Request Capture
      */
-    async paymentRequestCapture(paymentRequestId: string, idempotencyKey?: string, createCapture?: CreateCapture, ): Promise<Capture> {
-        const response = await this.paymentRequestCaptureRaw({ paymentRequestId: paymentRequestId, idempotencyKey: idempotencyKey, createCapture: createCapture });
+    async paymentRequestCapture(requestParameters: PaymentRequestCaptureRequest): Promise<Capture> {
+        const response = await this.paymentRequestCaptureRaw(requestParameters);
         return await response.value();
     }
 
@@ -367,8 +367,8 @@ export class PaymentRequestApi extends runtime.BaseAPI {
      * Payment Request Resend Auth
      * Payment Request Resend Auth
      */
-    async paymentRequestResendAuth(paymentRequestId: string, idempotencyKey?: string, ): Promise<PublicPaymentRequest> {
-        const response = await this.paymentRequestResendAuthRaw({ paymentRequestId: paymentRequestId, idempotencyKey: idempotencyKey });
+    async paymentRequestResendAuth(requestParameters: PaymentRequestResendAuthRequest): Promise<PublicPaymentRequest> {
+        const response = await this.paymentRequestResendAuthRaw(requestParameters);
         return await response.value();
     }
 

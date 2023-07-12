@@ -83,8 +83,8 @@ export class BalanceApi extends runtime.BaseAPI {
      * Backward compatible api to the old balance endpoint. https://xendit.github.io/apireference/#balances
      * To be deprecated. Backward compatible api to old /balance endpoint
      */
-    async getBalanceOld(accountType?: GetBalanceOldAccountTypeEnum, currency?: string, forUserId?: string, idempotencyKey?: string, ): Promise<BalanceOld> {
-        const response = await this.getBalanceOldRaw({ accountType: accountType, currency: currency, forUserId: forUserId, idempotencyKey: idempotencyKey });
+    async getBalanceOld(requestParameters: GetBalanceOldRequest = {}): Promise<BalanceOld> {
+        const response = await this.getBalanceOldRaw(requestParameters);
         return await response.value();
     }
 

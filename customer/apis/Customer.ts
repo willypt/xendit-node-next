@@ -80,8 +80,8 @@ export class CustomerApi extends runtime.BaseAPI {
      * Retrieves a single customer object
      * Get Customer
      */
-    async getCustomer(id: string, forUserId?: string, xIdempotencyKey?: string, idempotencyKey?: string, ): Promise<Customer> {
-        const response = await this.getCustomerRaw({ id: id, forUserId: forUserId, xIdempotencyKey: xIdempotencyKey, idempotencyKey: idempotencyKey });
+    async getCustomer(requestParameters: GetCustomerRequest): Promise<Customer> {
+        const response = await this.getCustomerRaw(requestParameters);
         return await response.value();
     }
 
