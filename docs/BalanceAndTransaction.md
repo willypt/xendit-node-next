@@ -16,7 +16,7 @@ const xenditBalanceClient = new BalanceClient({secretKey: YOUR_SECRET_KEY})
 // xenditBalanceClient.getBalance()
 ```
 
-## To be deprecated. Backward compatible api to old /balance endpoint
+## Get Balance (To be deprecated. Backward compatible api to old /balance endpoint.)
 
 
 ### Function Signature

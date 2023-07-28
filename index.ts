@@ -3,24 +3,24 @@
 export * from './runtime';
 
 import {
-   PaymentRequests,
+   PaymentRequest,
 } from './payment_request';
 export {
-   PaymentRequests,
+   PaymentRequest,
 } from './payment_request';
 
 import {
-   PaymentMethods,
+   PaymentMethod,
 } from './payment_method';
 export {
-   PaymentMethods,
+   PaymentMethod,
 } from './payment_method';
 
 import {
-   Balance,   PublicTransactions,
+   BalanceAndTransaction,
 } from './balance_and_transaction';
 export {
-   Balance,   PublicTransactions,
+   BalanceAndTransaction,
 } from './balance_and_transaction';
 
 import {
@@ -31,10 +31,10 @@ export {
 } from './refund';
 
 import {
-   Payouts,
+   Payout,
 } from './payout';
 export {
-   Payouts,
+   Payout,
 } from './payout';
 
 
@@ -46,17 +46,15 @@ export class Xendit {
   opts: XenditOpts;
 
 
-    PaymentRequests: PaymentRequests;
+    PaymentRequest: PaymentRequest;
 
-    PaymentMethods: PaymentMethods;
+    PaymentMethod: PaymentMethod;
 
-    Balance: Balance;
-
-    PublicTransactions: PublicTransactions;
+    BalanceAndTransaction: BalanceAndTransaction;
 
     Refund: Refund;
 
-    Payouts: Payouts;
+    Payout: Payout;
 
 
   constructor({ secretKey: _secretKey, xenditURL: _xenditURL }: XenditOpts) {
@@ -77,16 +75,15 @@ export class Xendit {
     }
 
 
-    this.PaymentRequests = new PaymentRequests(this.opts);
+    this.PaymentRequest = new PaymentRequest(this.opts);
     
-    this.PaymentMethods = new PaymentMethods(this.opts);
+    this.PaymentMethod = new PaymentMethod(this.opts);
     
-    this.Balance = new Balance(this.opts);
-        this.PublicTransactions = new PublicTransactions(this.opts);
+    this.BalanceAndTransaction = new BalanceAndTransaction(this.opts);
     
     this.Refund = new Refund(this.opts);
     
-    this.Payouts = new Payouts(this.opts);
+    this.Payout = new Payout(this.opts);
     
   }
 }
