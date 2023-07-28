@@ -4,10 +4,10 @@
 
 ## Properties
 
-Name | Type | Required | Description
------------- | ------------- | ------------- | -------------
-**minimum** | number | ✅ | 
-**maximum** | number | ✅ | 
-**minimumIncrement** | number | ✅ | 
+| Name | Type | Required | Description |
+| ------------ | ------------- | ------------- | ------------- |
+| **minimum** | number | ✅ |  |
+**maximum** | number | ✅ |  |
+**minimumIncrement** | number | ✅ |  |
 
 

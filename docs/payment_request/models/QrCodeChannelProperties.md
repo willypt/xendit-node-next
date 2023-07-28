@@ -1,13 +1,12 @@
-# GetPayouts200ResponseLinks
+# QRCodeChannelProperties
 
-
+QR Code Channel Properties
 
 ## Properties
 
 | Name | Type | Required | Description |
 | ------------ | ------------- | ------------- | ------------- |
-| **href** | string |  |  |
-**rel** | string |  |  |
-**method** | string |  |  |
+| **qrString** | string |  |  |
+**expiresAt** | Date |  |  |
 
 

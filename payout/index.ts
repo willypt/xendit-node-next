@@ -1,3 +1,3 @@
 export {
-   PayoutsAPIApi as PayoutsAPI,
+   PayoutsApi as Payouts,
 } from './apis'

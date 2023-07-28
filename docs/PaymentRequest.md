@@ -1,16 +1,16 @@
-## Default
-You can use the APIs below to interface with Xendit's `Default` API.
+## PaymentRequests
+You can use the APIs below to interface with Xendit's `PaymentRequests` API.
 To start using the API, you need to destruct instantiated Xendit client or directly import the module and set the secret key.
 
 ```typescript
-import { Xendit, Default as DefaultClient } from 'xendit-node';
+import { Xendit, PaymentRequests as PaymentRequestsClient } from 'xendit-node';
 
 const xenditClient = new Xendit({secretKey: YOUR_SECRET_KEY})
-const { Default } = Xendit
+const { PaymentRequests } = Xendit
 
-const xenditDefaultClient = new DefaultClient({secretKey: YOUR_SECRET_KEY})
+const xenditPaymentRequestsClient = new PaymentRequestsClient({secretKey: YOUR_SECRET_KEY})
 
-// At this point, `Default` and `xenditDefaultClient` will have no usage difference
+// At this point, `PaymentRequests` and `xenditPaymentRequestsClient` will have no usage difference
 ```
 
 ## Payment Request Authorize

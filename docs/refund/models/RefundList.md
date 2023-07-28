@@ -4,9 +4,9 @@
 
 ## Properties
 
-Name | Type | Required | Description
------------- | ------------- | ------------- | -------------
-**data** | [[]Refund](Refund.md) | ✅ | 
-**hasMore** | boolean |  | 
+| Name | Type | Required | Description |
+| ------------ | ------------- | ------------- | ------------- |
+| **data** | [[]Refund](Refund.md) | ✅ |  |
+**hasMore** | boolean |  |  |
 
 

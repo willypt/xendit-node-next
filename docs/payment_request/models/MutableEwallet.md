@@ -4,9 +4,9 @@
 
 ## Properties
 
-Name | Type | Required | Description
------------- | ------------- | ------------- | -------------
-**channelCode** | [EwalletChannelCode](EwalletChannelCode.md) |  | 
-**channelProperties** | [EwalletChannelProperties](EwalletChannelProperties.md) |  | 
+| Name | Type | Required | Description |
+| ------------ | ------------- | ------------- | ------------- |
+| **channelCode** | [EwalletChannelCode](EwalletChannelCode.md) |  |  |
+**channelProperties** | [EwalletChannelProperties](EwalletChannelProperties.md) |  |  |
 
 

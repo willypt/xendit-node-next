@@ -3,10 +3,10 @@
 export * from './runtime';
 
 import {
-   Default,
+   PaymentRequests,
 } from './payment_request';
 export {
-   Default,
+   PaymentRequests,
 } from './payment_request';
 
 import {
@@ -24,10 +24,10 @@ export {
 } from './refund';
 
 import {
-   PayoutsAPI,   Payouts API,
+   Payouts,
 } from './payout';
 export {
-   PayoutsAPI,   Payouts API,
+   Payouts,
 } from './payout';
 
 
@@ -39,7 +39,7 @@ export class Xendit {
   opts: XenditOpts;
 
 
-    Default: Default;
+    PaymentRequests: PaymentRequests;
 
     Balance: Balance;
 
@@ -47,9 +47,7 @@ export class Xendit {
 
     Refund: Refund;
 
-    PayoutsAPI: PayoutsAPI;
-
-    Payouts API: Payouts API;
+    Payouts: Payouts;
 
 
   constructor({ secretKey: _secretKey, xenditURL: _xenditURL }: XenditOpts) {
@@ -70,15 +68,14 @@ export class Xendit {
     }
 
 
-    this.Default = new Default(this.opts);
+    this.PaymentRequests = new PaymentRequests(this.opts);
     
     this.Balance = new Balance(this.opts);
         this.PublicTransactions = new PublicTransactions(this.opts);
     
     this.Refund = new Refund(this.opts);
     
-    this.PayoutsAPI = new PayoutsAPI(this.opts);
-        this.Payouts API = new Payouts API(this.opts);
+    this.Payouts = new Payouts(this.opts);
     
   }
 }

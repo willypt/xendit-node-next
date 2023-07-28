@@ -4,12 +4,12 @@
 
 ## Properties
 
-Name | Type | Required | Description
------------- | ------------- | ------------- | -------------
-**xenditFee** | number | ✅ | 
-**valueAddedTax** | number | ✅ | 
-**xenditWithholdingTax** | number |  | 
-**thirdPartyWithholdingTax** | number |  | 
-**status** | string |  | 
+| Name | Type | Required | Description |
+| ------------ | ------------- | ------------- | ------------- |
+| **xenditFee** | number | ✅ |  |
+**valueAddedTax** | number | ✅ |  |
+**xenditWithholdingTax** | number |  |  |
+**thirdPartyWithholdingTax** | number |  |  |
+**status** | string |  |  |
 
 

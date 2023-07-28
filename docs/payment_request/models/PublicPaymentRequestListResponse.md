@@ -4,9 +4,9 @@
 
 ## Properties
 
-Name | Type | Required | Description
------------- | ------------- | ------------- | -------------
-**data** | [[]PublicPaymentRequest](PublicPaymentRequest.md) | ✅ | 
-**hasMore** | boolean | ✅ | 
+| Name | Type | Required | Description |
+| ------------ | ------------- | ------------- | ------------- |
+| **data** | [[]PublicPaymentRequest](PublicPaymentRequest.md) | ✅ |  |
+**hasMore** | boolean | ✅ |  |
 
 

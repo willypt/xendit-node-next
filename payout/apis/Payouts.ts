@@ -68,7 +68,7 @@ export interface GetPayoutsRequest {
 /**
  * 
  */
-export class PayoutsAPIApi extends runtime.BaseAPI {
+export class PayoutsApi extends runtime.BaseAPI {
 
     secretKey: string;
     xenditURL: string;

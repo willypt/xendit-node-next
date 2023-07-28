@@ -1,16 +1,16 @@
-## PayoutsAPI
-You can use the APIs below to interface with Xendit's `PayoutsAPI` API.
+## Payouts
+You can use the APIs below to interface with Xendit's `Payouts` API.
 To start using the API, you need to destruct instantiated Xendit client or directly import the module and set the secret key.
 
 ```typescript
-import { Xendit, PayoutsAPI as PayoutsAPIClient } from 'xendit-node';
+import { Xendit, Payouts as PayoutsClient } from 'xendit-node';
 
 const xenditClient = new Xendit({secretKey: YOUR_SECRET_KEY})
-const { PayoutsAPI } = Xendit
+const { Payouts } = Xendit
 
-const xenditPayoutsAPIClient = new PayoutsAPIClient({secretKey: YOUR_SECRET_KEY})
+const xenditPayoutsClient = new PayoutsClient({secretKey: YOUR_SECRET_KEY})
 
-// At this point, `PayoutsAPI` and `xenditPayoutsAPIClient` will have no usage difference
+// At this point, `Payouts` and `xenditPayoutsClient` will have no usage difference
 ```
 
 ## 
@@ -50,7 +50,7 @@ const xenditPayoutsAPIClient = new PayoutsAPIClient({secretKey: YOUR_SECRET_KEY}
 #### Bank Payout
 
 ```typescript
-const response = await PayoutsAPI.createPayout({
+const response = await Payouts.createPayout({
   "reference_id" : "DISB-001",
   "currency" : "PHP",
   "channel_code" : "PH_BDO",
@@ -66,7 +66,7 @@ const response = await PayoutsAPI.createPayout({
 #### OTC Payout
 
 ```typescript
-const response = await PayoutsAPI.createPayout({
+const response = await Payouts.createPayout({
   "reference_id" : "DISB-002",
   "currency" : "IDR",
   "channel_code" : "ID_ALFAMART",

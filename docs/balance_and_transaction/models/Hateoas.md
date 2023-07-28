@@ -4,10 +4,10 @@
 
 ## Properties
 
-Name | Type | Required | Description
------------- | ------------- | ------------- | -------------
-**href** | string | ✅ | 
-**rel** | string | ✅ | 
-**method** | string | ✅ | 
+| Name | Type | Required | Description |
+| ------------ | ------------- | ------------- | ------------- |
+| **href** | string | ✅ |  |
+**rel** | string | ✅ |  |
+**method** | string | ✅ |  |
 
 

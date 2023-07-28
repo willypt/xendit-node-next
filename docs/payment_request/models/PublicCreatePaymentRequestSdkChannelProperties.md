@@ -1,4 +1,4 @@
-# PublicChannelPropertiesOverwrite
+# PublicCreatePaymentRequestSDKChannelProperties
 
 
 
@@ -13,5 +13,6 @@
 **requireAuth** | boolean |  | Toggle used to require end-customer to input undergo OTP validation before completing a payment. OTP will always be required for transactions greater than 1,000,000 IDR. For BRI tokenized payment use only. |
 **merchantIdTag** | string |  | Tag for a Merchant ID that you want to associate this payment with. For merchants using their own MIDs to specify which MID they want to use |
 **cardonfileType** | string |  | Type of “credential-on-file” / “card-on-file” payment being made. Indicate that this payment uses a previously linked Payment Method for charging. |
+**cvv** | string |  | Three digit code written on the back of the card (usually called CVV/CVN). |
 
 

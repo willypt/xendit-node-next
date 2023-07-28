@@ -4,8 +4,8 @@
 
 ## Properties
 
-Name | Type | Required | Description
------------- | ------------- | ------------- | -------------
-**authCode** | string | ✅ | 
+| Name | Type | Required | Description |
+| ------------ | ------------- | ------------- | ------------- |
+| **authCode** | string | ✅ |  |
 
 

@@ -4,9 +4,9 @@
 
 ## Properties
 
-Name | Type | Required | Description
------------- | ------------- | ------------- | -------------
-**referenceId** | string |  | 
-**captureAmount** | number | ✅ | 
+| Name | Type | Required | Description |
+| ------------ | ------------- | ------------- | ------------- |
+| **referenceId** | string |  |  |
+**captureAmount** | number | ✅ |  |
 
 

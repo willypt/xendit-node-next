@@ -4,8 +4,8 @@
 
 ## Properties
 
-Name | Type | Required | Description
------------- | ------------- | ------------- | -------------
-**alternativeDisplays** | [[]VirtualAccountAlternativeDisplay](VirtualAccountAlternativeDisplay.md) |  | 
+| Name | Type | Required | Description |
+| ------------ | ------------- | ------------- | ------------- |
+| **alternativeDisplays** | [[]VirtualAccountAlternativeDisplay](VirtualAccountAlternativeDisplay.md) |  |  |
 
 

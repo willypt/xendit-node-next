@@ -1,3 +1,3 @@
 export {
-   DefaultApi as Default,
+   PaymentRequestsApi as PaymentRequests,
 } from './apis'

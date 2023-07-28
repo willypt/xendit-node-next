@@ -85,7 +85,7 @@ export interface ResendPaymentRequestAuthRequest {
 /**
  * 
  */
-export class DefaultApi extends runtime.BaseAPI {
+export class PaymentRequestsApi extends runtime.BaseAPI {
 
     secretKey: string;
     xenditURL: string;
