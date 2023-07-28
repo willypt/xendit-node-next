@@ -6,11 +6,14 @@ To start using the API, you need to destruct instantiated Xendit client or direc
 import { Xendit, Payouts as PayoutsClient } from 'xendit-node';
 
 const xenditClient = new Xendit({secretKey: YOUR_SECRET_KEY})
-const { Payouts } = Xendit
+const { Payouts } = xenditClient
 
 const xenditPayoutsClient = new PayoutsClient({secretKey: YOUR_SECRET_KEY})
 
-// At this point, `Payouts` and `xenditPayoutsClient` will have no usage difference
+// At this point, `Payouts` and `xenditPayoutsClient` will have no usage difference, for example:
+// Payouts.cancelPayout()
+// or
+// xenditPayoutsClient.cancelPayout()
 ```
 
 ## 

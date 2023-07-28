@@ -6,11 +6,14 @@ To start using the API, you need to destruct instantiated Xendit client or direc
 import { Xendit, Balance as BalanceClient } from 'xendit-node';
 
 const xenditClient = new Xendit({secretKey: YOUR_SECRET_KEY})
-const { Balance } = Xendit
+const { Balance } = xenditClient
 
 const xenditBalanceClient = new BalanceClient({secretKey: YOUR_SECRET_KEY})
 
-// At this point, `Balance` and `xenditBalanceClient` will have no usage difference
+// At this point, `Balance` and `xenditBalanceClient` will have no usage difference, for example:
+// Balance.getBalance()
+// or
+// xenditBalanceClient.getBalance()
 ```
 
 ## To be deprecated. Backward compatible api to old /balance endpoint
@@ -39,11 +42,14 @@ To start using the API, you need to destruct instantiated Xendit client or direc
 import { Xendit, PublicTransactions as PublicTransactionsClient } from 'xendit-node';
 
 const xenditClient = new Xendit({secretKey: YOUR_SECRET_KEY})
-const { PublicTransactions } = Xendit
+const { PublicTransactions } = xenditClient
 
 const xenditPublicTransactionsClient = new PublicTransactionsClient({secretKey: YOUR_SECRET_KEY})
 
-// At this point, `PublicTransactions` and `xenditPublicTransactionsClient` will have no usage difference
+// At this point, `PublicTransactions` and `xenditPublicTransactionsClient` will have no usage difference, for example:
+// PublicTransactions.getAllTransactions()
+// or
+// xenditPublicTransactionsClient.getAllTransactions()
 ```
 
 ## Get a list of transactions

@@ -6,11 +6,14 @@ To start using the API, you need to destruct instantiated Xendit client or direc
 import { Xendit, Refund as RefundClient } from 'xendit-node';
 
 const xenditClient = new Xendit({secretKey: YOUR_SECRET_KEY})
-const { Refund } = Xendit
+const { Refund } = xenditClient
 
 const xenditRefundClient = new RefundClient({secretKey: YOUR_SECRET_KEY})
 
-// At this point, `Refund` and `xenditRefundClient` will have no usage difference
+// At this point, `Refund` and `xenditRefundClient` will have no usage difference, for example:
+// Refund.cancelRefund()
+// or
+// xenditRefundClient.cancelRefund()
 ```
 
 ## 

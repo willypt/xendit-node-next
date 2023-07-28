@@ -6,11 +6,14 @@ To start using the API, you need to destruct instantiated Xendit client or direc
 import { Xendit, PaymentRequests as PaymentRequestsClient } from 'xendit-node';
 
 const xenditClient = new Xendit({secretKey: YOUR_SECRET_KEY})
-const { PaymentRequests } = Xendit
+const { PaymentRequests } = xenditClient
 
 const xenditPaymentRequestsClient = new PaymentRequestsClient({secretKey: YOUR_SECRET_KEY})
 
-// At this point, `PaymentRequests` and `xenditPaymentRequestsClient` will have no usage difference
+// At this point, `PaymentRequests` and `xenditPaymentRequestsClient` will have no usage difference, for example:
+// PaymentRequests.authorizePaymentRequest()
+// or
+// xenditPaymentRequestsClient.authorizePaymentRequest()
 ```
 
 ## Payment Request Authorize
