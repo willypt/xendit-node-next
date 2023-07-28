@@ -2,40 +2,20 @@
 /* eslint-disable */
 export * from './runtime';
 
-import {
-   PaymentRequest,
-} from './payment_request';
-export {
-   PaymentRequest,
-} from './payment_request';
+import { PaymentRequests } from './payment_request';
+export { PaymentRequests } from './payment_request';
 
-import {
-   PaymentMethod,
-} from './payment_method';
-export {
-   PaymentMethod,
-} from './payment_method';
+import { PaymentMethods } from './payment_method';
+export { PaymentMethods } from './payment_method';
 
-import {
-   BalanceAndTransaction,
-} from './balance_and_transaction';
-export {
-   BalanceAndTransaction,
-} from './balance_and_transaction';
+import { Balance, PublicTransactions } from './balance_and_transaction';
+export { Balance, PublicTransactions } from './balance_and_transaction';
 
-import {
-   Refund,
-} from './refund';
-export {
-   Refund,
-} from './refund';
+import { Refund } from './refund';
+export { Refund } from './refund';
 
-import {
-   Payout,
-} from './payout';
-export {
-   Payout,
-} from './payout';
+import { Payouts } from './payout';
+export { Payouts } from './payout';
 
 
 export interface XenditOpts {
@@ -44,17 +24,12 @@ export interface XenditOpts {
 }
 export class Xendit {
   opts: XenditOpts;
-
-
-    PaymentRequest: PaymentRequest;
-
-    PaymentMethod: PaymentMethod;
-
-    BalanceAndTransaction: BalanceAndTransaction;
-
-    Refund: Refund;
-
-    Payout: Payout;
+  PaymentRequests: PaymentRequests;
+  PaymentMethods: PaymentMethods;
+  Balance: Balance;
+  PublicTransactions: PublicTransactions;
+  Refund: Refund;
+  Payouts: Payouts;
 
 
   constructor({ secretKey: _secretKey, xenditURL: _xenditURL }: XenditOpts) {
@@ -75,15 +50,16 @@ export class Xendit {
     }
 
 
-    this.PaymentRequest = new PaymentRequest(this.opts);
+       this.PaymentRequests = new PaymentRequests(this.opts);
     
-    this.PaymentMethod = new PaymentMethod(this.opts);
+       this.PaymentMethods = new PaymentMethods(this.opts);
     
-    this.BalanceAndTransaction = new BalanceAndTransaction(this.opts);
+       this.Balance = new Balance(this.opts);
+       this.PublicTransactions = new PublicTransactions(this.opts);
     
-    this.Refund = new Refund(this.opts);
+       this.Refund = new Refund(this.opts);
     
-    this.Payout = new Payout(this.opts);
+       this.Payouts = new Payouts(this.opts);
     
   }
 }

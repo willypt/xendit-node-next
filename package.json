@@ -1,11 +1,11 @@
 {
   "name": "willypt-xen-node",
-  "version": "3.0.0-beta.4",
+  "version": "3.0.0-beta.5",
   "description": "OpenAPI client for xendit-node",
   "author": "OpenAPI-Generator",
   "repository": {
     "type": "git",
-    "url": "https://github.com/willypt/willypt-xen-node.git"
+    "url": "https://github.com/xendit/xendit-node.git"
   },
   "files": ["dist/**"],
   "main": "./dist/index.js",
