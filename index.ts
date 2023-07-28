@@ -10,6 +10,13 @@ export {
 } from './payment_request';
 
 import {
+   PaymentMethods,
+} from './payment_method';
+export {
+   PaymentMethods,
+} from './payment_method';
+
+import {
    Balance,   PublicTransactions,
 } from './balance_and_transaction';
 export {
@@ -41,6 +48,8 @@ export class Xendit {
 
     PaymentRequests: PaymentRequests;
 
+    PaymentMethods: PaymentMethods;
+
     Balance: Balance;
 
     PublicTransactions: PublicTransactions;
@@ -69,6 +78,8 @@ export class Xendit {
 
 
     this.PaymentRequests = new PaymentRequests(this.opts);
+    
+    this.PaymentMethods = new PaymentMethods(this.opts);
     
     this.Balance = new Balance(this.opts);
         this.PublicTransactions = new PublicTransactions(this.opts);

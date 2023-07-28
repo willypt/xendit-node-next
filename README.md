@@ -50,6 +50,7 @@ const xenditClient = new Xendit({
 
 Find detailed API information and examples for each of our product’s by clicking the links below,
 * [PaymentRequests](docs/PaymentRequests.md)
+* [PaymentMethods](docs/PaymentMethods.md)
 * [Balance](docs/Balance.md)* [PublicTransactions](docs/PublicTransactions.md)
 * [Refund](docs/Refund.md)
 * [Payouts](docs/Payouts.md)
