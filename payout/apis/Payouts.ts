@@ -74,9 +74,11 @@ export class PayoutsApi extends runtime.BaseAPI {
     xenditURL: string;
 
     constructor({secretKey, xenditURL}: {secretKey: string, xenditURL?: string}) {
-        super()
+        const conf = new runtime.Configuration({
+            basePath: xenditURL || 'https://api.xendit.co'
+        })
+        super(conf)
         this.secretKey = secretKey;
-        this.xenditURL = xenditURL || 'https://api.xendit.co';
     }
 
     /**

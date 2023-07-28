@@ -1,6 +1,6 @@
 {
   "name": "willypt-xen-node",
-  "version": "3.0.0-beta.4",
+  "version": "3.0.0-beta.6",
   "description": "OpenAPI client for xendit-node",
   "author": "OpenAPI-Generator",
   "repository": {
