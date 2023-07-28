@@ -37,6 +37,18 @@ export interface MutableVirtualAccount {
      * @type {number}
      * @memberof MutableVirtualAccount
      */
+    minAmount?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof MutableVirtualAccount
+     */
+    maxAmount?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof MutableVirtualAccount
+     */
     amount?: number | null;
     /**
      * 
@@ -95,6 +107,8 @@ export function MutableVirtualAccountFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
         
+        'minAmount': !exists(json, 'min_amount') ? undefined : json['min_amount'],
+        'maxAmount': !exists(json, 'max_amount') ? undefined : json['max_amount'],
         'amount': !exists(json, 'amount') ? undefined : json['amount'],
         'currency': !exists(json, 'currency') ? undefined : PaymentRequestCurrencyFromJSON(json['currency']),
         'channelCode': VirtualAccountChannelCodeFromJSON(json['channel_code']),
@@ -112,6 +126,8 @@ export function MutableVirtualAccountToJSON(value?: MutableVirtualAccount | null
     }
     return {
         
+        'min_amount': value.minAmount,
+        'max_amount': value.maxAmount,
         'amount': value.amount,
         'currency': PaymentRequestCurrencyToJSON(value.currency),
         'channel_code': VirtualAccountChannelCodeToJSON(value.channelCode),

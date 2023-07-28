@@ -13,12 +13,6 @@ import {
     CaptureFromJSONTyped,
     CaptureToJSON,
 } from './Capture';
-import type { Link } from './Link';
-import {
-    LinkFromJSON,
-    LinkFromJSONTyped,
-    LinkToJSON,
-} from './Link';
 
 /**
  * 
@@ -38,12 +32,6 @@ export interface CaptureListResponse {
      * @memberof CaptureListResponse
      */
     hasMore: boolean;
-    /**
-     * 
-     * @type {Array<Link>}
-     * @memberof CaptureListResponse
-     */
-    links: Array<Link>;
 }
 
 /**
@@ -53,7 +41,6 @@ export function instanceOfCaptureListResponse(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "data" in value;
     isInstance = isInstance && "hasMore" in value;
-    isInstance = isInstance && "links" in value;
 
     return isInstance;
 }
@@ -70,7 +57,6 @@ export function CaptureListResponseFromJSONTyped(json: any, ignoreDiscriminator:
         
         'data': ((json['data'] as Array<any>).map(CaptureFromJSON)),
         'hasMore': json['has_more'],
-        'links': ((json['links'] as Array<any>).map(LinkFromJSON)),
     };
 }
 
@@ -85,7 +71,6 @@ export function CaptureListResponseToJSON(value?: CaptureListResponse | null): a
         
         'data': ((value.data as Array<any>).map(CaptureToJSON)),
         'has_more': value.hasMore,
-        'links': ((value.links as Array<any>).map(LinkToJSON)),
     };
 }
 

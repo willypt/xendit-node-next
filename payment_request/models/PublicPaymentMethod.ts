@@ -7,30 +7,12 @@
  */
 
 import { exists, mapValues } from '../../runtime';
-import type { InternalVirtualAccount } from './InternalVirtualAccount';
-import {
-    InternalVirtualAccountFromJSON,
-    InternalVirtualAccountFromJSONTyped,
-    InternalVirtualAccountToJSON,
-} from './InternalVirtualAccount';
 import type { MutableCard } from './MutableCard';
 import {
     MutableCardFromJSON,
     MutableCardFromJSONTyped,
     MutableCardToJSON,
 } from './MutableCard';
-import type { MutableCrypto } from './MutableCrypto';
-import {
-    MutableCryptoFromJSON,
-    MutableCryptoFromJSONTyped,
-    MutableCryptoToJSON,
-} from './MutableCrypto';
-import type { MutableDirectBankTransfer } from './MutableDirectBankTransfer';
-import {
-    MutableDirectBankTransferFromJSON,
-    MutableDirectBankTransferFromJSONTyped,
-    MutableDirectBankTransferToJSON,
-} from './MutableDirectBankTransfer';
 import type { MutableDirectDebit } from './MutableDirectDebit';
 import {
     MutableDirectDebitFromJSON,
@@ -73,6 +55,12 @@ import {
     PaymentMethodTypeFromJSONTyped,
     PaymentMethodTypeToJSON,
 } from './PaymentMethodType';
+import type { PublicVirtualAccount } from './PublicVirtualAccount';
+import {
+    PublicVirtualAccountFromJSON,
+    PublicVirtualAccountFromJSONTyped,
+    PublicVirtualAccountToJSON,
+} from './PublicVirtualAccount';
 
 /**
  * 
@@ -121,49 +109,37 @@ export interface PublicPaymentMethod {
      * @type {MutableCard}
      * @memberof PublicPaymentMethod
      */
-    card: MutableCard | null;
-    /**
-     * 
-     * @type {MutableCrypto}
-     * @memberof PublicPaymentMethod
-     */
-    cryptocurrency?: MutableCrypto | null;
-    /**
-     * 
-     * @type {MutableDirectBankTransfer}
-     * @memberof PublicPaymentMethod
-     */
-    directBankTransfer: MutableDirectBankTransfer | null;
+    card?: MutableCard | null;
     /**
      * 
      * @type {MutableDirectDebit}
      * @memberof PublicPaymentMethod
      */
-    directDebit: MutableDirectDebit | null;
+    directDebit?: MutableDirectDebit | null;
     /**
      * 
      * @type {MutableEwallet}
      * @memberof PublicPaymentMethod
      */
-    ewallet: MutableEwallet | null;
+    ewallet?: MutableEwallet | null;
     /**
      * 
      * @type {MutableOverTheCounter}
      * @memberof PublicPaymentMethod
      */
-    overTheCounter: MutableOverTheCounter | null;
+    overTheCounter?: MutableOverTheCounter | null;
     /**
      * 
-     * @type {InternalVirtualAccount}
+     * @type {PublicVirtualAccount}
      * @memberof PublicPaymentMethod
      */
-    virtualAccount: InternalVirtualAccount | null;
+    virtualAccount?: PublicVirtualAccount | null;
     /**
      * 
      * @type {MutableQRCode}
      * @memberof PublicPaymentMethod
      */
-    qrCode: MutableQRCode | null;
+    qrCode?: MutableQRCode | null;
     /**
      * 
      * @type {PaymentMethodReusability}
@@ -191,13 +167,6 @@ export function instanceOfPublicPaymentMethod(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "id" in value;
     isInstance = isInstance && "type" in value;
-    isInstance = isInstance && "card" in value;
-    isInstance = isInstance && "directBankTransfer" in value;
-    isInstance = isInstance && "directDebit" in value;
-    isInstance = isInstance && "ewallet" in value;
-    isInstance = isInstance && "overTheCounter" in value;
-    isInstance = isInstance && "virtualAccount" in value;
-    isInstance = isInstance && "qrCode" in value;
     isInstance = isInstance && "reusability" in value;
     isInstance = isInstance && "status" in value;
 
@@ -220,14 +189,12 @@ export function PublicPaymentMethodFromJSONTyped(json: any, ignoreDiscriminator:
         'updated': !exists(json, 'updated') ? undefined : json['updated'],
         'description': !exists(json, 'description') ? undefined : json['description'],
         'referenceId': !exists(json, 'reference_id') ? undefined : json['reference_id'],
-        'card': MutableCardFromJSON(json['card']),
-        'cryptocurrency': !exists(json, 'cryptocurrency') ? undefined : MutableCryptoFromJSON(json['cryptocurrency']),
-        'directBankTransfer': MutableDirectBankTransferFromJSON(json['direct_bank_transfer']),
-        'directDebit': MutableDirectDebitFromJSON(json['direct_debit']),
-        'ewallet': MutableEwalletFromJSON(json['ewallet']),
-        'overTheCounter': MutableOverTheCounterFromJSON(json['over_the_counter']),
-        'virtualAccount': InternalVirtualAccountFromJSON(json['virtual_account']),
-        'qrCode': MutableQRCodeFromJSON(json['qr_code']),
+        'card': !exists(json, 'card') ? undefined : MutableCardFromJSON(json['card']),
+        'directDebit': !exists(json, 'direct_debit') ? undefined : MutableDirectDebitFromJSON(json['direct_debit']),
+        'ewallet': !exists(json, 'ewallet') ? undefined : MutableEwalletFromJSON(json['ewallet']),
+        'overTheCounter': !exists(json, 'over_the_counter') ? undefined : MutableOverTheCounterFromJSON(json['over_the_counter']),
+        'virtualAccount': !exists(json, 'virtual_account') ? undefined : PublicVirtualAccountFromJSON(json['virtual_account']),
+        'qrCode': !exists(json, 'qr_code') ? undefined : MutableQRCodeFromJSON(json['qr_code']),
         'reusability': PaymentMethodReusabilityFromJSON(json['reusability']),
         'status': PaymentMethodStatusFromJSON(json['status']),
         'metadata': !exists(json, 'metadata') ? undefined : json['metadata'],
@@ -250,12 +217,10 @@ export function PublicPaymentMethodToJSON(value?: PublicPaymentMethod | null): a
         'description': value.description,
         'reference_id': value.referenceId,
         'card': MutableCardToJSON(value.card),
-        'cryptocurrency': MutableCryptoToJSON(value.cryptocurrency),
-        'direct_bank_transfer': MutableDirectBankTransferToJSON(value.directBankTransfer),
         'direct_debit': MutableDirectDebitToJSON(value.directDebit),
         'ewallet': MutableEwalletToJSON(value.ewallet),
         'over_the_counter': MutableOverTheCounterToJSON(value.overTheCounter),
-        'virtual_account': InternalVirtualAccountToJSON(value.virtualAccount),
+        'virtual_account': PublicVirtualAccountToJSON(value.virtualAccount),
         'qr_code': MutableQRCodeToJSON(value.qrCode),
         'reusability': PaymentMethodReusabilityToJSON(value.reusability),
         'status': PaymentMethodStatusToJSON(value.status),

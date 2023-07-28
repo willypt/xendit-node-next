@@ -12,7 +12,6 @@
  * @export
  */
 export const QRCodeChannelCode = {
-    Qris: 'QRIS',
     Dana: 'DANA',
     Rcbc: 'RCBC',
     Linkaja: 'LINKAJA',

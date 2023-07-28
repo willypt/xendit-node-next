@@ -7,24 +7,6 @@
  */
 
 import { exists, mapValues } from '../../runtime';
-import type { MutableCard } from './MutableCard';
-import {
-    MutableCardFromJSON,
-    MutableCardFromJSONTyped,
-    MutableCardToJSON,
-} from './MutableCard';
-import type { MutableCrypto } from './MutableCrypto';
-import {
-    MutableCryptoFromJSON,
-    MutableCryptoFromJSONTyped,
-    MutableCryptoToJSON,
-} from './MutableCrypto';
-import type { MutableDirectBankTransfer } from './MutableDirectBankTransfer';
-import {
-    MutableDirectBankTransferFromJSON,
-    MutableDirectBankTransferFromJSONTyped,
-    MutableDirectBankTransferToJSON,
-} from './MutableDirectBankTransfer';
 import type { MutableDirectDebit } from './MutableDirectDebit';
 import {
     MutableDirectDebitFromJSON,
@@ -100,24 +82,6 @@ export interface PaymentMethod {
     referenceId?: string;
     /**
      * 
-     * @type {MutableCard}
-     * @memberof PaymentMethod
-     */
-    card?: MutableCard | null;
-    /**
-     * 
-     * @type {MutableCrypto}
-     * @memberof PaymentMethod
-     */
-    cryptocurrency?: MutableCrypto | null;
-    /**
-     * 
-     * @type {MutableDirectBankTransfer}
-     * @memberof PaymentMethod
-     */
-    directBankTransfer?: MutableDirectBankTransfer | null;
-    /**
-     * 
      * @type {MutableDirectDebit}
      * @memberof PaymentMethod
      */
@@ -173,9 +137,6 @@ export function PaymentMethodFromJSONTyped(json: any, ignoreDiscriminator: boole
         'reusability': PaymentMethodReusabilityFromJSON(json['reusability']),
         'description': !exists(json, 'description') ? undefined : json['description'],
         'referenceId': !exists(json, 'reference_id') ? undefined : json['reference_id'],
-        'card': !exists(json, 'card') ? undefined : MutableCardFromJSON(json['card']),
-        'cryptocurrency': !exists(json, 'cryptocurrency') ? undefined : MutableCryptoFromJSON(json['cryptocurrency']),
-        'directBankTransfer': !exists(json, 'direct_bank_transfer') ? undefined : MutableDirectBankTransferFromJSON(json['direct_bank_transfer']),
         'directDebit': !exists(json, 'direct_debit') ? undefined : MutableDirectDebitFromJSON(json['direct_debit']),
         'ewallet': !exists(json, 'ewallet') ? undefined : MutableEwalletFromJSON(json['ewallet']),
         'overTheCounter': !exists(json, 'over_the_counter') ? undefined : MutableOverTheCounterFromJSON(json['over_the_counter']),
@@ -197,9 +158,6 @@ export function PaymentMethodToJSON(value?: PaymentMethod | null): any {
         'reusability': PaymentMethodReusabilityToJSON(value.reusability),
         'description': value.description,
         'reference_id': value.referenceId,
-        'card': MutableCardToJSON(value.card),
-        'cryptocurrency': MutableCryptoToJSON(value.cryptocurrency),
-        'direct_bank_transfer': MutableDirectBankTransferToJSON(value.directBankTransfer),
         'direct_debit': MutableDirectDebitToJSON(value.directDebit),
         'ewallet': MutableEwalletToJSON(value.ewallet),
         'over_the_counter': MutableOverTheCounterToJSON(value.overTheCounter),

@@ -13,8 +13,6 @@
  */
 export const PaymentMethodType = {
     Card: 'CARD',
-    Cryptocurrency: 'CRYPTOCURRENCY',
-    DirectBankTransfer: 'DIRECT_BANK_TRANSFER',
     DirectDebit: 'DIRECT_DEBIT',
     Ewallet: 'EWALLET',
     OverTheCounter: 'OVER_THE_COUNTER',

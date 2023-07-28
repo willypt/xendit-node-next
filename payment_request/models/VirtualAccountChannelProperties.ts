@@ -18,7 +18,7 @@ export interface VirtualAccountChannelProperties {
      * @type {string}
      * @memberof VirtualAccountChannelProperties
      */
-    customerName?: string;
+    customerName: string;
     /**
      * You can assign specific Virtual Account number using this parameter. If you do not send one, one will be picked at random. Make sure the number you specify is within your Virtual Account range.
      * @type {string}
@@ -44,6 +44,7 @@ export interface VirtualAccountChannelProperties {
  */
 export function instanceOfVirtualAccountChannelProperties(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "customerName" in value;
 
     return isInstance;
 }
@@ -58,7 +59,7 @@ export function VirtualAccountChannelPropertiesFromJSONTyped(json: any, ignoreDi
     }
     return {
         
-        'customerName': !exists(json, 'customer_name') ? undefined : json['customer_name'],
+        'customerName': json['customer_name'],
         'virtualAccountNumber': !exists(json, 'virtual_account_number') ? undefined : json['virtual_account_number'],
         'expiresAt': !exists(json, 'expires_at') ? undefined : (new Date(json['expires_at'])),
         'suggestedAmount': !exists(json, 'suggested_amount') ? undefined : json['suggested_amount'],

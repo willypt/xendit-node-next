@@ -3,32 +3,32 @@
 export * from './runtime';
 
 import {
-   PaymentRequest,
+   Default,
 } from './payment_request';
 export {
-   PaymentRequest,
+   Default,
 } from './payment_request';
 
 import {
-   Balance,
-} from './balance';
+   Balance,   PublicTransactions,
+} from './balance_and_transaction';
 export {
-   Balance,
-} from './balance';
+   Balance,   PublicTransactions,
+} from './balance_and_transaction';
 
 import {
    Refund,
-} from './refunds';
+} from './refund';
 export {
    Refund,
-} from './refunds';
+} from './refund';
 
 import {
-   Customer,
-} from './customer';
+   PayoutsAPI,   Payouts API,
+} from './payout';
 export {
-   Customer,
-} from './customer';
+   PayoutsAPI,   Payouts API,
+} from './payout';
 
 
 export interface XenditOpts {
@@ -39,13 +39,17 @@ export class Xendit {
   opts: XenditOpts;
 
 
-    PaymentRequest: PaymentRequest;
+    Default: Default;
 
     Balance: Balance;
 
+    PublicTransactions: PublicTransactions;
+
     Refund: Refund;
 
-    Customer: Customer;
+    PayoutsAPI: PayoutsAPI;
+
+    Payouts API: Payouts API;
 
 
   constructor({ secretKey: _secretKey, xenditURL: _xenditURL }: XenditOpts) {
@@ -66,13 +70,15 @@ export class Xendit {
     }
 
 
-    this.PaymentRequest = new PaymentRequest(this.opts);
+    this.Default = new Default(this.opts);
     
     this.Balance = new Balance(this.opts);
+        this.PublicTransactions = new PublicTransactions(this.opts);
     
     this.Refund = new Refund(this.opts);
     
-    this.Customer = new Customer(this.opts);
+    this.PayoutsAPI = new PayoutsAPI(this.opts);
+        this.Payouts API = new Payouts API(this.opts);
     
   }
 }

@@ -25,6 +25,18 @@ export interface DirectDebitChannelPropertiesBankAccount {
      * @memberof DirectDebitChannelPropertiesBankAccount
      */
     failureReturnUrl?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DirectDebitChannelPropertiesBankAccount
+     */
+    mobileNumber?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DirectDebitChannelPropertiesBankAccount
+     */
+    identityDocumentNumber?: string;
 }
 
 /**
@@ -48,6 +60,8 @@ export function DirectDebitChannelPropertiesBankAccountFromJSONTyped(json: any, 
         
         'successReturnUrl': !exists(json, 'success_return_url') ? undefined : json['success_return_url'],
         'failureReturnUrl': !exists(json, 'failure_return_url') ? undefined : json['failure_return_url'],
+        'mobileNumber': !exists(json, 'mobile_number') ? undefined : json['mobile_number'],
+        'identityDocumentNumber': !exists(json, 'identity_document_number') ? undefined : json['identity_document_number'],
     };
 }
 
@@ -62,6 +76,8 @@ export function DirectDebitChannelPropertiesBankAccountToJSON(value?: DirectDebi
         
         'success_return_url': value.successReturnUrl,
         'failure_return_url': value.failureReturnUrl,
+        'mobile_number': value.mobileNumber,
+        'identity_document_number': value.identityDocumentNumber,
     };
 }
 

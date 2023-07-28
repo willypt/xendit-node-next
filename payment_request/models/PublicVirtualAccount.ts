@@ -43,6 +43,18 @@ export interface PublicVirtualAccount {
      * @type {number}
      * @memberof PublicVirtualAccount
      */
+    minAmount?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof PublicVirtualAccount
+     */
+    maxAmount?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof PublicVirtualAccount
+     */
     amount?: number | null;
     /**
      * 
@@ -107,6 +119,8 @@ export function PublicVirtualAccountFromJSONTyped(json: any, ignoreDiscriminator
     }
     return {
         
+        'minAmount': !exists(json, 'min_amount') ? undefined : json['min_amount'],
+        'maxAmount': !exists(json, 'max_amount') ? undefined : json['max_amount'],
         'amount': !exists(json, 'amount') ? undefined : json['amount'],
         'currency': !exists(json, 'currency') ? undefined : PaymentRequestCurrencyFromJSON(json['currency']),
         'channelCode': VirtualAccountChannelCodeFromJSON(json['channel_code']),
@@ -125,6 +139,8 @@ export function PublicVirtualAccountToJSON(value?: PublicVirtualAccount | null):
     }
     return {
         
+        'min_amount': value.minAmount,
+        'max_amount': value.maxAmount,
         'amount': value.amount,
         'currency': PaymentRequestCurrencyToJSON(value.currency),
         'channel_code': VirtualAccountChannelCodeToJSON(value.channelCode),

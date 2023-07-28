@@ -124,6 +124,18 @@ export interface PublicPaymentRequest {
     amount?: number;
     /**
      * 
+     * @type {number}
+     * @memberof PublicPaymentRequest
+     */
+    minAmount?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof PublicPaymentRequest
+     */
+    maxAmount?: number | null;
+    /**
+     * 
      * @type {PaymentRequestCountry}
      * @memberof PublicPaymentRequest
      */
@@ -237,6 +249,8 @@ export function PublicPaymentRequestFromJSONTyped(json: any, ignoreDiscriminator
         'customerId': !exists(json, 'customer_id') ? undefined : json['customer_id'],
         'customer': !exists(json, 'customer') ? undefined : json['customer'],
         'amount': !exists(json, 'amount') ? undefined : json['amount'],
+        'minAmount': !exists(json, 'min_amount') ? undefined : json['min_amount'],
+        'maxAmount': !exists(json, 'max_amount') ? undefined : json['max_amount'],
         'country': !exists(json, 'country') ? undefined : PaymentRequestCountryFromJSON(json['country']),
         'currency': PaymentRequestCurrencyFromJSON(json['currency']),
         'paymentMethod': PublicPaymentMethodFromJSON(json['payment_method']),
@@ -270,6 +284,8 @@ export function PublicPaymentRequestToJSON(value?: PublicPaymentRequest | null):
         'customer_id': value.customerId,
         'customer': value.customer,
         'amount': value.amount,
+        'min_amount': value.minAmount,
+        'max_amount': value.maxAmount,
         'country': PaymentRequestCountryToJSON(value.country),
         'currency': PaymentRequestCurrencyToJSON(value.currency),
         'payment_method': PublicPaymentMethodToJSON(value.paymentMethod),

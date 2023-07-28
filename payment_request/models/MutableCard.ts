@@ -25,6 +25,12 @@ import {
     CardVerificationResultsFromJSONTyped,
     CardVerificationResultsToJSON,
 } from './CardVerificationResults';
+import type { PaymentRequestCurrency } from './PaymentRequestCurrency';
+import {
+    PaymentRequestCurrencyFromJSON,
+    PaymentRequestCurrencyFromJSONTyped,
+    PaymentRequestCurrencyToJSON,
+} from './PaymentRequestCurrency';
 
 /**
  * 
@@ -34,22 +40,34 @@ import {
 export interface MutableCard {
     /**
      * 
+     * @type {PaymentRequestCurrency}
+     * @memberof MutableCard
+     */
+    currency: PaymentRequestCurrency;
+    /**
+     * 
      * @type {CardChannelProperties}
      * @memberof MutableCard
      */
-    channelProperties?: CardChannelProperties;
+    channelProperties: CardChannelProperties;
     /**
      * 
      * @type {CardInformation}
      * @memberof MutableCard
      */
-    cardInformation?: CardInformation;
+    cardInformation: CardInformation;
     /**
      * 
      * @type {CardVerificationResults}
      * @memberof MutableCard
      */
     cardVerificationResults?: CardVerificationResults | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof MutableCard
+     */
+    token?: object | null;
 }
 
 /**
@@ -57,6 +75,9 @@ export interface MutableCard {
  */
 export function instanceOfMutableCard(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "currency" in value;
+    isInstance = isInstance && "channelProperties" in value;
+    isInstance = isInstance && "cardInformation" in value;
 
     return isInstance;
 }
@@ -71,9 +92,11 @@ export function MutableCardFromJSONTyped(json: any, ignoreDiscriminator: boolean
     }
     return {
         
-        'channelProperties': !exists(json, 'channel_properties') ? undefined : CardChannelPropertiesFromJSON(json['channel_properties']),
-        'cardInformation': !exists(json, 'card_information') ? undefined : CardInformationFromJSON(json['card_information']),
+        'currency': PaymentRequestCurrencyFromJSON(json['currency']),
+        'channelProperties': CardChannelPropertiesFromJSON(json['channel_properties']),
+        'cardInformation': CardInformationFromJSON(json['card_information']),
         'cardVerificationResults': !exists(json, 'card_verification_results') ? undefined : CardVerificationResultsFromJSON(json['card_verification_results']),
+        'token': !exists(json, 'token') ? undefined : json['token'],
     };
 }
 
@@ -86,9 +109,11 @@ export function MutableCardToJSON(value?: MutableCard | null): any {
     }
     return {
         
+        'currency': PaymentRequestCurrencyToJSON(value.currency),
         'channel_properties': CardChannelPropertiesToJSON(value.channelProperties),
         'card_information': CardInformationToJSON(value.cardInformation),
         'card_verification_results': CardVerificationResultsToJSON(value.cardVerificationResults),
+        'token': value.token,
     };
 }
 

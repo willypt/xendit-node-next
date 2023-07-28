@@ -85,13 +85,19 @@ export interface Capture {
      * @type {string}
      * @memberof Capture
      */
-    customerId?: string | null;
+    customerId: string | null;
     /**
      * 
      * @type {object}
      * @memberof Capture
      */
     metadata: object | null;
+    /**
+     * 
+     * @type {object}
+     * @memberof Capture
+     */
+    channelProperties: object | null;
     /**
      * 
      * @type {string}
@@ -132,7 +138,9 @@ export function instanceOfCapture(value: object): boolean {
     isInstance = isInstance && "status" in value;
     isInstance = isInstance && "paymentMethod" in value;
     isInstance = isInstance && "failureCode" in value;
+    isInstance = isInstance && "customerId" in value;
     isInstance = isInstance && "metadata" in value;
+    isInstance = isInstance && "channelProperties" in value;
     isInstance = isInstance && "created" in value;
     isInstance = isInstance && "updated" in value;
 
@@ -159,8 +167,9 @@ export function CaptureFromJSONTyped(json: any, ignoreDiscriminator: boolean): C
         'status': json['status'],
         'paymentMethod': PublicPaymentMethodFromJSON(json['payment_method']),
         'failureCode': json['failure_code'],
-        'customerId': !exists(json, 'customer_id') ? undefined : json['customer_id'],
+        'customerId': json['customer_id'],
         'metadata': json['metadata'],
+        'channelProperties': json['channel_properties'],
         'created': json['created'],
         'updated': json['updated'],
     };
@@ -187,6 +196,7 @@ export function CaptureToJSON(value?: Capture | null): any {
         'failure_code': value.failureCode,
         'customer_id': value.customerId,
         'metadata': value.metadata,
+        'channel_properties': value.channelProperties,
         'created': value.created,
         'updated': value.updated,
     };

@@ -18,32 +18,68 @@ export interface PaymentRequestAction {
      * @type {string}
      * @memberof PaymentRequestAction
      */
-    action?: string;
+    action: PaymentRequestActionActionEnum;
     /**
      * 
      * @type {string}
      * @memberof PaymentRequestAction
      */
-    method?: string;
+    urlType: PaymentRequestActionUrlTypeEnum;
     /**
      * 
      * @type {string}
      * @memberof PaymentRequestAction
      */
-    url?: string;
+    method: string | null;
     /**
      * 
      * @type {string}
      * @memberof PaymentRequestAction
      */
-    urlType?: string;
+    url: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof PaymentRequestAction
+     */
+    qrCode: string | null;
 }
+
+
+/**
+ * @export
+ */
+export const PaymentRequestActionActionEnum = {
+    Auth: 'AUTH',
+    ResendAuth: 'RESEND_AUTH',
+    Capture: 'CAPTURE',
+    Cancel: 'CANCEL',
+    PresentToCustomer: 'PRESENT_TO_CUSTOMER'
+} as const;
+export type PaymentRequestActionActionEnum = typeof PaymentRequestActionActionEnum[keyof typeof PaymentRequestActionActionEnum];
+
+/**
+ * @export
+ */
+export const PaymentRequestActionUrlTypeEnum = {
+    Api: 'API',
+    Web: 'WEB',
+    Mobile: 'MOBILE',
+    Deeplink: 'DEEPLINK'
+} as const;
+export type PaymentRequestActionUrlTypeEnum = typeof PaymentRequestActionUrlTypeEnum[keyof typeof PaymentRequestActionUrlTypeEnum];
+
 
 /**
  * Check if a given object implements the PaymentRequestAction interface.
  */
 export function instanceOfPaymentRequestAction(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "action" in value;
+    isInstance = isInstance && "urlType" in value;
+    isInstance = isInstance && "method" in value;
+    isInstance = isInstance && "url" in value;
+    isInstance = isInstance && "qrCode" in value;
 
     return isInstance;
 }
@@ -58,10 +94,11 @@ export function PaymentRequestActionFromJSONTyped(json: any, ignoreDiscriminator
     }
     return {
         
-        'action': !exists(json, 'action') ? undefined : json['action'],
-        'method': !exists(json, 'method') ? undefined : json['method'],
-        'url': !exists(json, 'url') ? undefined : json['url'],
-        'urlType': !exists(json, 'url_type') ? undefined : json['url_type'],
+        'action': json['action'],
+        'urlType': json['url_type'],
+        'method': json['method'],
+        'url': json['url'],
+        'qrCode': json['qr_code'],
     };
 }
 
@@ -75,9 +112,10 @@ export function PaymentRequestActionToJSON(value?: PaymentRequestAction | null):
     return {
         
         'action': value.action,
+        'url_type': value.urlType,
         'method': value.method,
         'url': value.url,
-        'url_type': value.urlType,
+        'qr_code': value.qrCode,
     };
 }
 

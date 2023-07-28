@@ -51,6 +51,18 @@ export interface DirectDebitChannelProperties {
      */
     failureReturnUrl?: string;
     /**
+     * 
+     * @type {string}
+     * @memberof DirectDebitChannelProperties
+     */
+    identityDocumentNumber?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DirectDebitChannelProperties
+     */
+    accountNumber?: string;
+    /**
      * Last four digits of the debit card
      * @type {string}
      * @memberof DirectDebitChannelProperties
@@ -92,6 +104,8 @@ export function DirectDebitChannelPropertiesFromJSONTyped(json: any, ignoreDiscr
         'mobileNumber': !exists(json, 'mobile_number') ? undefined : json['mobile_number'],
         'successReturnUrl': !exists(json, 'success_return_url') ? undefined : json['success_return_url'],
         'failureReturnUrl': !exists(json, 'failure_return_url') ? undefined : json['failure_return_url'],
+        'identityDocumentNumber': !exists(json, 'identity_document_number') ? undefined : json['identity_document_number'],
+        'accountNumber': !exists(json, 'account_number') ? undefined : json['account_number'],
         'cardLastFour': !exists(json, 'card_last_four') ? undefined : json['card_last_four'],
         'cardExpiry': !exists(json, 'card_expiry') ? undefined : json['card_expiry'],
         'email': !exists(json, 'email') ? undefined : json['email'],
@@ -110,6 +124,8 @@ export function DirectDebitChannelPropertiesToJSON(value?: DirectDebitChannelPro
         'mobile_number': value.mobileNumber,
         'success_return_url': value.successReturnUrl,
         'failure_return_url': value.failureReturnUrl,
+        'identity_document_number': value.identityDocumentNumber,
+        'account_number': value.accountNumber,
         'card_last_four': value.cardLastFour,
         'card_expiry': value.cardExpiry,
         'email': value.email,

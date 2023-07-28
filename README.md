@@ -1,45 +1,61 @@
-## xendit-node-next@2.79.0
+![Xendit Node SDK](images/header.jpg)
 
-This generator creates TypeScript/JavaScript client that utilizes [Fetch API](https://fetch.spec.whatwg.org/). The generated Node module can be used in the following environments:
+# Xendit Node SDK
 
-Environment
-* Node.js
-* Webpack
-* Browserify
+The official Xendit Node SDK provides a simple and convenient way to call Xendit's REST API
+in applications written in Node.
 
-Language level
-* ES5 - you must have a Promises/A+ library installed
-* ES6
+* Package version: 3.0.0-beta.3
 
-Module system
-* CommonJS
-* ES6 module system
+# Getting Started
 
-It can be used in both TypeScript and JavaScript. In TypeScript, the definition should be automatically resolved via `package.json`. ([Reference](http://www.typescriptlang.org/docs/handbook/typings-for-npm-packages.html))
+## Installation
 
-### Building
+### Requirements
 
-To build and compile the typescript sources to javascript use:
-```
-npm install
-npm run build
+Node 16.0 and later.
+
+### Install with npm
+```bash
+npm install xendit-node@latest --save
 ```
 
-### Publishing
+TypeScript support is included in this package.
 
-First build the package then run ```npm publish```
+## Authorization
 
-### Consuming
+The SDK needs to be instantiated using your secret API key obtained from the [Xendit Dashboard](https://dashboard.xendit.co/settings/developers#api-keys).
+You can sign up for a free Dashboard account [here](https://dashboard.xendit.co/register).
 
-navigate to the folder of your consuming project and run one of the following commands.
+```typescript
+import { Xendit } from 'xendit-node';
 
-_published:_
-
+const xenditClient = new Xendit({
+  secretKey: SECRET_API_KEY,
+})
 ```
-npm install xendit-node-next@2.79.0 --save
+
+### Custom Xendit URL
+By default, the SDK will use the Xendit production URL (`https://api.xendit.co`) to make API requests.<br/>
+If you need to override the default Xendit URL, you can pass in a custom URL to the `Xendit` constructor.
+
+```typescript
+const xenditClient = new Xendit({
+  secretKey: SECRET_API_KEY,
+  xenditURL: 'https://mock-server.localhost:3000',
+})
 ```
 
-_unPublished (not recommended):_
+# Documentation
 
-```
-npm install PATH_TO_GENERATED_PACKAGE --save
+Find detailed API information and examples for each of our product’s by clicking the links below,
+* [Default](docs/Default.md)
+* [Balance](docs/Balance.md)* [PublicTransactions](docs/PublicTransactions.md)
+* [Refund](docs/Refund.md)
+* [PayoutsAPI](docs/PayoutsAPI.md)* [Payouts API](docs/Payouts API.md)
+
+
+Further Reading
+
+* [Xendit Docs](https://docs.xendit.co/)
+* [Xendit API Reference](https://developers.xendit.co/)

@@ -20,6 +20,12 @@ export interface DirectDebitChannelPropertiesDebitCard {
      */
     mobileNumber?: string;
     /**
+     * 
+     * @type {string}
+     * @memberof DirectDebitChannelPropertiesDebitCard
+     */
+    accountNumber?: string;
+    /**
      * Last four digits of the debit card
      * @type {string}
      * @memberof DirectDebitChannelPropertiesDebitCard
@@ -59,6 +65,7 @@ export function DirectDebitChannelPropertiesDebitCardFromJSONTyped(json: any, ig
     return {
         
         'mobileNumber': !exists(json, 'mobile_number') ? undefined : json['mobile_number'],
+        'accountNumber': !exists(json, 'account_number') ? undefined : json['account_number'],
         'cardLastFour': !exists(json, 'card_last_four') ? undefined : json['card_last_four'],
         'cardExpiry': !exists(json, 'card_expiry') ? undefined : json['card_expiry'],
         'email': !exists(json, 'email') ? undefined : json['email'],
@@ -75,6 +82,7 @@ export function DirectDebitChannelPropertiesDebitCardToJSON(value?: DirectDebitC
     return {
         
         'mobile_number': value.mobileNumber,
+        'account_number': value.accountNumber,
         'card_last_four': value.cardLastFour,
         'card_expiry': value.cardExpiry,
         'email': value.email,

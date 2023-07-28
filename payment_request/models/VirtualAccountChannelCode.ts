@@ -24,7 +24,8 @@ export const VirtualAccountChannelCode = {
     Artajasa: 'ARTAJASA',
     Pv: 'PV',
     Vietcapital: 'VIETCAPITAL',
-    Woori: 'WOORI'
+    Woori: 'WOORI',
+    Msb: 'MSB'
 } as const;
 export type VirtualAccountChannelCode = typeof VirtualAccountChannelCode[keyof typeof VirtualAccountChannelCode];
 

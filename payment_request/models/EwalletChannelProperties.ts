@@ -37,6 +37,18 @@ export interface EwalletChannelProperties {
      * @memberof EwalletChannelProperties
      */
     redeemPoints?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EwalletChannelProperties
+     */
+    mobilenumber?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EwalletChannelProperties
+     */
+    cashtag?: string;
 }
 
 /**
@@ -62,6 +74,8 @@ export function EwalletChannelPropertiesFromJSONTyped(json: any, ignoreDiscrimin
         'failureReturnUrl': !exists(json, 'failure_return_url') ? undefined : json['failure_return_url'],
         'cancelReturnUrl': !exists(json, 'cancel_return_url') ? undefined : json['cancel_return_url'],
         'redeemPoints': !exists(json, 'redeem_points') ? undefined : json['redeem_points'],
+        'mobilenumber': !exists(json, 'mobile:number') ? undefined : json['mobile:number'],
+        'cashtag': !exists(json, 'cashtag') ? undefined : json['cashtag'],
     };
 }
 
@@ -78,6 +92,8 @@ export function EwalletChannelPropertiesToJSON(value?: EwalletChannelProperties 
         'failure_return_url': value.failureReturnUrl,
         'cancel_return_url': value.cancelReturnUrl,
         'redeem_points': value.redeemPoints,
+        'mobile:number': value.mobilenumber,
+        'cashtag': value.cashtag,
     };
 }
 
